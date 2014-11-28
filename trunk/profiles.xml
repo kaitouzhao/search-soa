@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profilesXml xmlns="http://maven.apache.org/PROFILES/1.0.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://maven.apache.org/PROFILES/1.0.0 http://maven.apache.org/xsd/profiles-1.0.0.xsd">
+
+    <profiles>
+
+        <profile>
+            <id>local</id>
+            <activation>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+            <properties>
+                <search.log.level>DEBUG</search.log.level>
+                <search.log.path>/opt/logs/search-soa</search.log.path>
+                <solr.server>http://10.0.0.156:9666/solr/</solr.server>
+                <dubbo.application.name>searchSoa</dubbo.application.name>
+                <dubbo.registry.protocol>zookeeper</dubbo.registry.protocol>
+                <dubbo.registry.address>zoo1.womaiapp.test:2181,zoo2.womaiapp.test:2181,zoo3.womaiapp.test:2181</dubbo.registry.address>
+                <dubbo.registry.group>/dubbo/local</dubbo.registry.group>
+            </properties>
+        </profile>
+
+		<profile>
+            <id>dev</id>
+            <properties>
+                <search.log.level>DEBUG</search.log.level>
+                <search.log.path>/opt/logs/search-soa</search.log.path>
+                <solr.server>http://10.0.0.156:9666/solr/</solr.server>
+                <dubbo.application.name>search-soa</dubbo.application.name>
+                <dubbo.registry.protocol>zookeeper</dubbo.registry.protocol>
+                <dubbo.registry.address>zoo1.womaiapp.dev:2181,zoo2.womaiapp.dev:2181,zoo3.womaiapp.dev:2181</dubbo.registry.address>
+                <dubbo.registry.group>/dubbo/dev</dubbo.registry.group>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <search.log.level>DEBUG</search.log.level>
+                <search.log.path>/opt/logs/search-soa</search.log.path>
+                <solr.server>http://10.0.0.156:9666/solr/</solr.server>
+                <dubbo.application.name>search-soa</dubbo.application.name>
+                <dubbo.registry.protocol>zookeeper</dubbo.registry.protocol>
+                <dubbo.registry.address>zoo1.womaiapp.test:2181,zoo2.womaiapp.test:2181,zoo3.womaiapp.test:2181</dubbo.registry.address>
+                <dubbo.registry.group>/dubbo/test</dubbo.registry.group>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>pro</id>
+            <properties>
+                <search.log.level>ERROR</search.log.level>
+                <search.log.path>/opt/logs/search-soa</search.log.path>
+                <solr.server>http://10.0.0.156:9666/solr/</solr.server>
+                <dubbo.application.name>search-soa</dubbo.application.name>
+                <dubbo.registry.protocol>zookeeper</dubbo.registry.protocol>
+                <dubbo.registry.address>z1.womai.com:2181,z2.womai.com:2181,z3.womai.com:2181,z4.womai.com:2181,z5.womai.com:2181</dubbo.registry.address>
+                <dubbo.registry.group>/dubbo/pro</dubbo.registry.group>
+            </properties>
+        </profile>
+
+    </profiles>
+
+</profilesXml>

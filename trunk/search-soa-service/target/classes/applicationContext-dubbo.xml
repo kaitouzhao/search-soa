@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://code.alibabatech.com/schema/dubbo
+		     http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+       default-lazy-init="true">
+
+    <!--  dubbo服务的实现类  -->
+    <bean id="indexService" class="com.womai.search.soa.solr.service.impl.IndexServiceImpl"/>
+    <bean id="queryService" class="com.womai.search.soa.solr.service.impl.QueryServiceImpl"/>
+    <!--solr测试-->
+    <bean id="testSolr" class="com.womai.search.soa.Demo">
+        <property name="solrServer" value="http://10.0.0.156:9666/solr/"/>
+    </bean>
+
+    <!--  dubbo配置注册信息分割线  -->
+    <dubbo:application name="searchSoa"/>
+
+    <!--  dubbo配置注册信息分割线        -->
+    <dubbo:registry address="zoo1.womaiapp.test:2181,zoo2.womaiapp.test:2181,zoo3.womaiapp.test:2181" protocol="zookeeper"
+                    group="/dubbo/local"/>
+
+    <dubbo:protocol port="-1" payload="83886080"/>
+
+    <!-- 使用dubbo协议暴露服务 -->
+    <dubbo:service interface="com.womai.search.soa.api.service.IndexService" ref="indexService"/>
+    <dubbo:service interface="com.womai.search.soa.api.service.QueryService" ref="queryService"/>
+
+</beans>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d [%p] %c.%M(%L) | %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="FILE-ALL" class="org.apache.log4j.FileAppender">
+        <param name="Append" value="false" />
+        <param name="file" value="${search.log.path}/search-soa.log" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%7r] %6p - %30.30c - %m \n" />
+        </layout>
+    </appender>
+
+    <logger name="com.womai.common.framework">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="org.springframework">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="com.alibaba.dubbo">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="org.apache.zookeeper">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="org.I0Itec.zkclient">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="org.apache.http">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="org.apache.solr.client">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="com.womai.search">
+        <level value="DEBUG"/>
+    </logger>
+
+    <root>
+        <level value="DEBUG"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</log4j:configuration>
